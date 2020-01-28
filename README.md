@@ -23,6 +23,12 @@ Before we begin coding, open the `index.html` file and press **Preview** to see 
 
 Take 10 minutes to look at the code in each of the three files to get a sense of how this template is laid out. 
 
+Pay attention to the following:
+
+### The `index.html` file
+
+Notice the 
+
 ## TODO 1: Add HTML for paddles and the ball
 
 Open the `index.html` file. You should see this in the body:
@@ -80,6 +86,26 @@ Now that we have HTML elements for our 3 game items, let's add some style to the
 - **The ball should have border-radius: 20px**
 - **Each paddle should have a unique background-color**
 
-At this point your game should look like this:
+At this point your 2 paddles and ball should look something like this:
+
+<img src="img/todo2-no-positioning.png" width=250>
+
+Let's get the ball and paddle out of the top corner. 
+
+**CODE: Add the following CSS comment and properties to each of your CSS blocks. Then, specify each game item's `top` and `left` properties so that they are in good starting positions:**
+
+```css
+/* positioning */
+position: absolute;
+top: 100px;
+left: 100px;
+```
+
+The `position: absolute` property allows us to use the `top` and `left` properties to position HTML elements anywhere we want on the screen. `top` is equivalent to setting the y-coordinate and `left` is equivalent to the x-coordinate.
+
+**Did you struggle finding the right position for the right paddle? Using JavaScript + jQuery will make this much easier! To the next TODO!**
+
+## TODO 3: Set the starting positions for the box and paddles with JavaScript and jQuery
+
 
 
