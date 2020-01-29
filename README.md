@@ -23,12 +23,6 @@ Before we begin coding, open the `index.html` file and press **Preview** to see 
 
 Take 10 minutes to look at the code in each of the three files to get a sense of how this template is laid out. 
 
-Pay attention to the following:
-
-### The `index.html` file
-
-Notice the 
-
 ## TODO 1: Add HTML for paddles and the ball
 
 Open the `index.html` file. You should see this in the body:
