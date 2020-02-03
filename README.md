@@ -15,7 +15,44 @@ Then, rename the folder to `pong`
 - Learn a method for handling key events
 - Discover the algorithm for detecting collisions between objects
 
+# Planning
+
+Always start any programming task by clarifying what you want to do and then breaking it down into small steps. Small steps can get you just about anywhere if you’ve got enough time. If you get stuck, break it down smaller!
+
+To help, there are a few ca
+
+## User Story / Gameplay
+- Describe the gameplay
+- What are the conditions when the game begins? 
+- Does the game have an end? If so, what are the conditions for when it ends?
+- What `if`s will there be?
+
+## Visual Game Components:
+- Which will be static?
+- Which will be animated?
+- What data will you need to model each game component?
+  - Common data values needed for moving components: `x`, `y`, `velocityX`, `velocityY`
+
+## Events / Logic 
+- What events will occur in this game? (timer events, keyboard events, clicking events?)
+- For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+
+**Bouncing Box Example:**
+
+1. When the user clicks on the box --> the score increases and is displayed on the box, the speed increases, the box is reset to the starting position. 
+2. When the timer ticks --> the box will move forward in some direction, if it hits the edge of the screen, reverse the direction 
+
 # TODOs
+
+The plan for building Pong will be as follows:
+1. Create the DOM elements needed for the game with HTML and CSS
+2. Model the DOM elements with data objects
+3. Reposition the DOM elements on the screen using jQuery
+4. Move the paddles in response to keyboard events
+5. Move the ball in response to timed events
+6. Bounce the ball when it collides with anything
+7. Identify when a point ends and what to do to start a new point
+8. End the game when 11 points are reached
 
 ## TODO 0: Run the template program and understand the basic structure
 
@@ -42,21 +79,15 @@ Each project in this class will be build on some kind of `board` with various `g
 
 Each one of these game items needs to be represented in HTML. 
 
-**CODE: Modify the contents of the `<div id="board">` element such that it contains a `<div>` for the two paddle (left and right) and the ball**
+**CODE: Add `<div>` elements for the ball and the two paddle (left and right) as children of the `<div id="board">` element. Each element should have a unique id.**
 
-Your HTML should look like this:
+HINT: To create a div with a particular `id` attribute, place the `id=""` attribute inside the opening tag:
 
 ```html
-<div id = "board"> 
-  <div id = "leftPaddle"> </div>
-  <div id = "ball"> </div>
-  <div id = "rightPaddle"> </div>
-</div>
+<div id="uniqueElement"> </div>
 ```
 
-Save your code and refresh your game. The box is now gone but where are the ball and paddles? Remember, in order for these elements to look like anything, we need to add CSS! 
-
-**Something to note here**: In my code above, the ball is between the left and right paddle. Later on, we will be positioning these elements within the board using absolute coordinates. Therefore, the order in which they are written in HTML won't matter.
+Save your code and refresh your game. The box is now gone but where are the ball and paddles? If you inspect the body, you'll see them in the DOM but in order for these elements to look like anything, we need to add CSS! 
 
 ## TODO 2: ADD CSS for the paddles and the ball
 
@@ -64,7 +95,7 @@ Open the `index.css` file.
 
 Now that we have HTML elements for our 3 game items, let's add some style to them so we can see them. For most projects, we'll be using simple 2D shapes since they are relatively easy to render with basic HTML and CSS skills.
 
-**CODE: Add 3 new style rules, one for each gameItem's unique id following the template below **
+**CODE: Add 3 new style rules, one for each gameItem's unique id following the template below**
 
 ```css
 #id {
@@ -75,12 +106,12 @@ Now that we have HTML elements for our 3 game items, let's add some style to the
 }
 ``` 
 
-**Code: Now, make the following changes
-- **Paddles should have width: 20px and height: 80px**
-- **The ball should have border-radius: 20px**
-- **Each paddle should have a unique background-color**
+**Code: Now, make the following changes**
+- Paddles should have `width: 20px;` and `height: 80px;`
+- Each paddle should have a unique `background-color`
+- The ball should have `width:20px;`, `height:20px` and `border-radius: 20px;`
 
-At this point your 2 paddles and ball should look something like this:
+If your elements only have these CSS properties, they should look something like this:
 
 <img src="img/todo2-no-positioning.png" width=250>
 
@@ -99,7 +130,24 @@ The `position: absolute` property allows us to use the `top` and `left` properti
 
 **Did you struggle finding the right position for the right paddle? Using JavaScript + jQuery will make this much easier! To the next TODO!**
 
-## TODO 3: Set the starting positions for the box and paddles with JavaScript and jQuery
+## TODO 3: Set the starting positions for the ball and paddles with JavaScript and jQuery
 
+One of the most common tasks in video game programming is positioning and re-positioning elements on the screen. On each frame, the ball will have to move and, if the players are pressing down any keys, the paddles will likely have to move as well.
+
+First, we'll need to select each of our DOM elements and save a reference to them in JavaScript - we'll be referencing them a lot!
+
+Then, we can write a helper function that can reposition _any_ DOM element using jQuery by modifying the `top` and `left` CSS properties. Rememember, `top` is equivalent to the y-coordinate and `left` is equivalent to the x-coordinate. By writing a helper function, we can reduce repetition and practice our skills of **Abstraction**!
+
+#### Step 1: Select DOM Elements 
+
+In the INITIALIZATION section
+
+#### Step 2: Create the repositionElement helper function
+
+In the HELPER FUNCTIONS section
+
+#### Step 3: Set the starting positions 
+
+At the bottom of the INITIALIZATION section
 
 
