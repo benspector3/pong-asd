@@ -44,7 +44,69 @@ With your partner, consider each of these questions and make sure you are aligne
 
 # Helpful Functions / Code
 
-Below are some functions we've written in the past that may be helpful to you in this project:
+Below are some code / functions we've written in the past that may be helpful to you in this project:
+
+### HTML for Game Items:
+
+Open the `index.html` file. You should see this in the body:
+
+```html
+<body>
+  <div id='board'>
+    <div id='gameItem'></div>
+  </div>
+</body>
+```
+
+Each project in this class will be build on some kind of `board` with various `gameItems` that are on the board. For this project, there are only 3 game items:
+- the left paddle
+- the ball
+- the right paddle
+
+Each one of these game items needs to be represented in HTML and, for the most part, `<div>`s can be used. To create a `<div>` with a particular `id` attribute, place the `id=""` attribute inside the opening tag:
+
+```html
+<div id="uniqueGameItemName"> </div>
+```
+
+### CSS for Game Items
+
+Open the `index.css` file.
+
+Adding CSS makes our gameItems actually become visible. For all projects in this course, we'll be using simple 2D shapes since they are relatively easy to render with basic HTML and CSS skills.
+
+The following properties will be useful for determining the appearance of our DOM elements:
+- `background-color`: the color of the element
+- `width`: the width of the element in pixels
+- `height`: the height of the element in pixels
+- `border-radius`: how rounded the edges of the element are. Leaving out this property will leave the element as a rectangle. Setting this value to be equal to `width` and `height` will make the shape a circle.
+
+The following properties will allow us to place our elements anywhere on the screen, relative to the `board`.
+- `position: absolute`: allows us to use the `top` and `left` properties to position HTML elements anywhere we want on the screen relative to the parent element. 
+- `top`: the y-coordinate location of the element on a flipped y-axis (value increases as you move downwards).
+- `left`: the x-coordinate location of the element.
+
+Overall, the CSS should look like this:
+
+```css
+#id {
+  /* appearance */
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  
+  /* positioning */
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+``` 
+
+Suggestions for this project:
+- Each paddle should have a unique `background-color`
+- Both paddles should have `width: 20px;` and `height: 80px;`
+- The ball should have `width:20px;`, `height:20px` and `border-radius: 20px;`
 
 ### Factory Function
 
@@ -169,76 +231,3 @@ The plan for building Pong will be as follows:
 7. Identify when a point ends --> Determine what to do to start a new point
 8. End the game when 11 points are reached
 
-## TODO 0: Run the template program and understand the basic structure
-
-Before we begin coding, open the `index.html` file and press **Preview** to see what we're starting with. It looks like the beginning of bouncing box, right?
-
-Take 10 minutes to look at the code in each of the three files to get a sense of how this template is laid out. 
-
-## TODO 1: Add HTML for paddles and the ball
-
-Open the `index.html` file. You should see this in the body:
-
-```html
-<body>
-  <div id='board'>
-    <div id='gameItem'></div>
-  </div>
-</body>
-```
-
-Each project in this class will be build on some kind of `board` with various `gameItems` that are on the board. For this project, there are only 3 game items:
-- the left paddle
-- the ball
-- the right paddle
-
-Each one of these game items needs to be represented in HTML. 
-
-**CODE: Add `<div>` elements for the ball and the two paddle (left and right) as children of the `<div id="board">` element. Each element should have a unique id.**
-
-HINT: To create a div with a particular `id` attribute, place the `id=""` attribute inside the opening tag:
-
-```html
-<div id="uniqueElement"> </div>
-```
-
-Save your code and refresh your game. The box is now gone but where are the ball and paddles? If you inspect the body, you'll see them in the DOM but in order for these elements to look like anything, we need to add CSS! 
-
-## TODO 2: ADD CSS for the paddles and the ball
-
-Open the `index.css` file.
-
-Now that we have HTML elements for our 3 game items, let's add some style to them so we can see them. For most projects, we'll be using simple 2D shapes since they are relatively easy to render with basic HTML and CSS skills.
-
-**CODE: Add 3 new style rules, one for each gameItem's unique id following the template below**
-
-```css
-#id {
-  /* size and shape */
-  width: 20px;
-  height: 20px;
-  background-color: white;
-}
-``` 
-
-**Code: Now, make the following changes**
-- Paddles should have `width: 20px;` and `height: 80px;`
-- Each paddle should have a unique `background-color`
-- The ball should have `width:20px;`, `height:20px` and `border-radius: 20px;`
-
-If your elements only have these CSS properties, they should look something like this:
-
-<img src="img/todo2-no-positioning.png" width=250>
-
-Let's get the ball and paddle out of the top corner. 
-
-**CODE: Add the following CSS comment and properties to each of your CSS blocks. Then, specify each game item's `top` and `left` properties so that they are in good starting positions:**
-
-```css
-/* positioning */
-position: absolute;
-top: 100px;
-left: 100px;
-```
-
-The `position: absolute` property allows us to use the `top` and `left` properties to position HTML elements anywhere we want on the screen. `top` is equivalent to setting the y-coordinate and `left` is equivalent to the x-coordinate.
