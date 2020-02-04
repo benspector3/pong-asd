@@ -42,7 +42,7 @@ To help, there are a few ca
 1. When the user clicks on the box --> the score increases and is displayed on the box, the speed increases, the box is reset to the starting position. 
 2. When the timer ticks --> the box will move forward in some direction, if it hits the edge of the screen, reverse the direction 
 
-# Helpful Functions
+# Helpful Functions / Code
 
 Below are some funcitons we've written in the past that may be helpful to you in this project:
 
@@ -70,7 +70,9 @@ Assuming that we will be managing the data of multiple DOM elements, we will nee
 
 ### Keybord Inputs
 
-This function assumes that the event `"keydown"` is being listened for. You can change what events are being listend for in the function `turnOnEvents`. 
+This function assumes that the event `"keydown"` is being listened for. You can change what events are being listend for in the function `turnOnEvents` of the template. 
+
+What your program does in response to particular keys is up to you. Check out the [Walker project](https://github.com/benspector3/asd-template-keyboard-intro/) for ideas on how to move an object with your keyboard.
 
 ```js
 var KEYCODE = {
@@ -86,6 +88,8 @@ function handleKeyDown() {
   }
 }
 ```
+
+Use https://keycode.info/ to find out the keycode for any key. 
 
 # TODOs
 
@@ -172,27 +176,4 @@ left: 100px;
 ```
 
 The `position: absolute` property allows us to use the `top` and `left` properties to position HTML elements anywhere we want on the screen. `top` is equivalent to setting the y-coordinate and `left` is equivalent to the x-coordinate.
-
-**Did you struggle finding the right position for the right paddle? Using JavaScript + jQuery will make this much easier! To the next TODO!**
-
-## TODO 3: Set the starting positions for the ball and paddles with JavaScript and jQuery
-
-One of the most common tasks in video game programming is positioning and re-positioning elements on the screen. On each frame, the ball will have to move and, if the players are pressing down any keys, the paddles will likely have to move as well.
-
-First, we'll need to select each of our DOM elements and save a reference to them in JavaScript - we'll be referencing them a lot!
-
-Then, we can write a helper function that can reposition _any_ DOM element using jQuery by modifying the `top` and `left` CSS properties. Rememember, `top` is equivalent to the y-coordinate and `left` is equivalent to the x-coordinate. By writing a helper function, we can reduce repetition and practice our skills of **Abstraction**!
-
-#### Step 1: Select DOM Elements 
-
-In the INITIALIZATION section
-
-#### Step 2: Create the repositionElement helper function
-
-In the HELPER FUNCTIONS section
-
-#### Step 3: Set the starting positions 
-
-At the bottom of the INITIALIZATION section
-
 
