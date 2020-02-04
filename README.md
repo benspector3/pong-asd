@@ -19,7 +19,7 @@ Then, rename the folder to `pong`
 
 Always start any programming task by clarifying what you want to do and then breaking it down into small steps. Small steps can get you just about anywhere if you’ve got enough time. If you get stuck, break it down smaller!
 
-To help, there are a few ca
+With your partner, consider each of these questions and make sure you are aligned on your answers:
 
 ## User Story / Gameplay
 - Describe the gameplay
@@ -42,56 +42,7 @@ To help, there are a few ca
 1. When the user clicks on the box --> the score increases and is displayed on the box, the speed increases, the box is reset to the starting position. 
 2. When the timer ticks --> the box will move forward in some direction, if it hits the edge of the screen, reverse the direction 
 
-# Helpful Functions / Code
-
-Below are some funcitons we've written in the past that may be helpful to you in this project:
-
-### Repositioning DOM Elements
-
-This function can be used to reposition DOM elements at absolute positions on the screen by manipulating the CSS properties `left` and `top`. 
-
-This function assumes that we have the following _global_ data values:
-- `$gameItem`: the jQuery Object for a `<div id="gameItem">` element
-- `x`: the x-coordinate / `left` value of the `$gameItem`
-- `y`: the y-coordinate / `top` value of the `$gameItem`
-- `velocityX`: the velocity (pixels/frame) along the x-axis of the `$gameItem`
-- `velocityY`: the velocity (pixels/frame) along the y-axis of the `$gameItem`
-
-```js
-function moveGameItem() {
-  x += velocityX;
-  y += velocityY;
-  $gameItem.css("left", positionX);
-  $gameItem.css("top", positionY);
-}
-```
-
-Assuming that we will be managing the data of multiple DOM elements, we will need to refactor this function such that it can handle _any_ `$gameItem` with its own `x`, `y`, `velocityX`, and `velocityY` values. 
-
-### Keybord Inputs
-
-This function assumes that the event `"keydown"` is being listened for. You can change what events are being listend for in the function `turnOnEvents` of the template. 
-
-What your program does in response to particular keys is up to you. Check out the [Walker project](https://github.com/benspector3/asd-template-keyboard-intro/) for ideas on how to move an object with your keyboard.
-
-```js
-var KEYCODE = {
-  ENTER: 13,
-}
-
-function handleKeyDown() {
-  var keycode = event.which;
-  console.log(keycode);
-  
-  if (keycode === 13) {
-    console.log("enter pressed");
-  }
-}
-```
-
-Use https://keycode.info/ to find out the keycode for any key. 
-
-# TODOs
+# Plan of Attack
 
 The plan for building Pong will be as follows:
 1. Create the DOM elements needed for the game with HTML and CSS
@@ -177,3 +128,74 @@ left: 100px;
 
 The `position: absolute` property allows us to use the `top` and `left` properties to position HTML elements anywhere we want on the screen. `top` is equivalent to setting the y-coordinate and `left` is equivalent to the x-coordinate.
 
+# Helpful Functions / Code
+
+Below are some funcitons we've written in the past that may be helpful to you in this project:
+
+### Factory Function
+
+We will need to manage the data for each `gameItem` in this project. I highly recommend using a factory function to ensure that each `gameItem` has the data below:
+- `gameItem.$element`
+- `gameItem.x`
+- `gameItem.y`
+- `gameItem.velocityX`
+- `gameItem.velocityY`
+
+```js
+function carFactory(make, color, doors = 4) {
+  return {
+    "make": make,
+    "color": color,
+    "doors": doors
+  };
+}
+
+var myCar = carFactory("chevy", "black", 2);
+var parentsCar = carFactory("volvo", "silver");   // default doors = 4 used 
+var dreamCar = carFactory("ferrari", "red", 2);
+```
+
+### Repositioning DOM Elements
+
+This function can be used to reposition DOM elements at absolute positions on the screen by manipulating the CSS properties `left` and `top`. 
+
+```js
+function moveGameItem() {
+  x += velocityX;
+  y += velocityY;
+  $gameItem.css("left", positionX);
+  $gameItem.css("top", positionY);
+}
+```
+
+This function assumes that we have the following _global_ data values:
+- `$gameItem`: the jQuery Object for a `<div id="gameItem">` element
+- `x`: the x-coordinate / `left` value of the `$gameItem`
+- `y`: the y-coordinate / `top` value of the `$gameItem`
+- `velocityX`: the velocity (pixels/frame) along the x-axis of the `$gameItem`
+- `velocityY`: the velocity (pixels/frame) along the y-axis of the `$gameItem`
+
+We will need to refactor this function such that it can handle _any_ `$gameItem` with its own `x`, `y`, `velocityX`, and `velocityY` values. 
+
+### Keybord Inputs
+
+This function assumes that the event `"keydown"` is being listened for. You can change what events are being listend for in the function `turnOnEvents` of the template. 
+
+What your program does in response to particular keys is up to you. Check out the [Walker project](https://github.com/benspector3/asd-template-keyboard-intro/) for ideas on how to move an object with your keyboard.
+
+```js
+var KEYCODE = {
+  ENTER: 13,
+}
+
+function handleKeyDown() {
+  var keycode = event.which;
+  console.log(keycode);
+  
+  if (keycode === 13) {
+    console.log("enter pressed");
+  }
+}
+```
+
+Use https://keycode.info/ to find out the keycode for any key. 
