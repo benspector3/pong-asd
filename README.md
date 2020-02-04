@@ -31,7 +31,7 @@ With your partner, consider each of these questions and make sure you are aligne
 - What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
   - Which will be static? (the board)
   - Which will be animated? (the box)
-- What data will you need to manage each game component?
+- What data will you need to manage each game component? For example, in Bouncing Box, the data values were `positionX`, `speedX`, and `points`.
 
 ### Events / Logic 
 - What events will occur in this game? (timer events, keyboard events, clicking events?)
