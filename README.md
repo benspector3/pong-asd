@@ -10,10 +10,10 @@ rm -rf asd-template/.git
 Then, rename the folder to `pong`
 
 # Learning Objectives
-- Build your first project using the template repository
 - Practice modeling data with Objects
-- Learn a method for handling key events
-- Discover the algorithm for detecting collisions between objects
+- Reuse code from previous projects to create something new
+- Practice abstraction
+- Apply the algorithm for detecting collisions between objects
 
 # Planning
 
@@ -158,7 +158,14 @@ var dreamCar = carFactory("ferrari", "red", 2);
 
 ### Repositioning DOM Elements
 
-This function can be used to reposition DOM elements at absolute positions on the screen by manipulating the CSS properties `left` and `top`. 
+This function can be used to reposition a DOM element `$gameItem` at an absolute position on the screen by manipulating the CSS properties `left` and `top`. 
+
+This function assumes that we have the following _global_ data values:
+- `$gameItem`: the jQuery Object for a `<div id="gameItem">` element
+- `x`: the x-coordinate / `left` value of the `$gameItem`
+- `y`: the y-coordinate / `top` value of the `$gameItem`
+- `velocityX`: the velocity (pixels/frame) along the x-axis of the `$gameItem`
+- `velocityY`: the velocity (pixels/frame) along the y-axis of the `$gameItem`
 
 ```js
 function moveGameItem() {
@@ -168,13 +175,6 @@ function moveGameItem() {
   $gameItem.css("top", positionY);
 }
 ```
-
-This function assumes that we have the following _global_ data values:
-- `$gameItem`: the jQuery Object for a `<div id="gameItem">` element
-- `x`: the x-coordinate / `left` value of the `$gameItem`
-- `y`: the y-coordinate / `top` value of the `$gameItem`
-- `velocityX`: the velocity (pixels/frame) along the x-axis of the `$gameItem`
-- `velocityY`: the velocity (pixels/frame) along the y-axis of the `$gameItem`
 
 We will need to refactor this function such that it can handle _any_ `$gameItem` with its own `x`, `y`, `velocityX`, and `velocityY` values. 
 
@@ -200,3 +200,44 @@ function handleKeyDown() {
 ```
 
 Use https://keycode.info/ to find out the keycode for any key. 
+
+# Abstraction Example	
+
+> Abstraction is the process of turning something specific (hard-coded) into something generic (reusable)	
+
+Repetitive code presents an opportunity to refactor for abstraction. Abstraction helps us to follow the D.R.Y. principle (don't repeat yourself).	
+
+To refactor repetitive code for abstraction, you can follow these 3 steps:	
+1. identify the repetetive statements and turn those statements into a new function declaration	
+2. identify the changing expressions/data (if any) and turn those expressions/data into parameters	
+3. replace repetitive code with function calls	
+
+Below is an example of refactoring for abstraction. Consider the following code which simulates rolling dice of different sizes:	
+
+```js
+var roll1 = Math.ceil(Math.random() * 6);	
+var roll2 = Math.ceil(Math.random() * 10);	
+var roll3 = Math.ceil(Math.random() * 20);	
+```
+
+Each time I roll the dice I am using the `Math.ceil()` and `Math.random()` functions, the `*` operator and a number value. These statements can be turned into a new function declaration.	
+
+```js	
+function rollDice() {	
+  return Math.ceil(Math.random() * 6); // the 6 should be a parameter, not hard-coded	
+}	
+var roll1 = rollDice(6);	
+var roll2 = rollDice(10);	
+var roll3 = rollDice(20);	
+```
+
+However, we want the number value `6` to change each time we call the function. That value must be replaced with a parameter:	
+
+```js	
+function rollDice(sides) {	
+  return Math.ceil(Math.random() * sides);	
+}	
+var roll1 = rollDice(6);	
+var roll2 = rollDice(10);	
+var roll3 = rollDice(20);	
+```
