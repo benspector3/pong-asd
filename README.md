@@ -42,6 +42,51 @@ To help, there are a few ca
 1. When the user clicks on the box --> the score increases and is displayed on the box, the speed increases, the box is reset to the starting position. 
 2. When the timer ticks --> the box will move forward in some direction, if it hits the edge of the screen, reverse the direction 
 
+# Helpful Functions
+
+Below are some funcitons we've written in the past that may be helpful to you in this project:
+
+### Repositioning DOM Elements
+
+This function can be used to reposition DOM elements at absolute positions on the screen by manipulating the CSS properties `left` and `top`. 
+
+This function assumes that we have the following _global_ data values:
+- `$gameItem`: the jQuery Object for a `<div id="gameItem">` element
+- `x`: the x-coordinate / `left` value of the `$gameItem`
+- `y`: the y-coordinate / `top` value of the `$gameItem`
+- `velocityX`: the velocity (pixels/frame) along the x-axis of the `$gameItem`
+- `velocityY`: the velocity (pixels/frame) along the y-axis of the `$gameItem`
+
+```js
+function moveGameItem() {
+  x += velocityX;
+  y += velocityY;
+  $gameItem.css("left", positionX);
+  $gameItem.css("top", positionY);
+}
+```
+
+Assuming that we will be managing the data of multiple DOM elements, we will need to refactor this function such that it can handle _any_ `$gameItem` with its own `x`, `y`, `velocityX`, and `velocityY` values. 
+
+### Keybord Inputs
+
+This function assumes that the event `"keydown"` is being listened for. You can change what events are being listend for in the function `turnOnEvents`. 
+
+```js
+var KEYCODE = {
+  ENTER: 13,
+}
+
+function handleKeyDown() {
+  var keycode = event.which;
+  console.log(keycode);
+  
+  if (keycode === 13) {
+    console.log("enter pressed");
+  }
+}
+```
+
 # TODOs
 
 The plan for building Pong will be as follows:
