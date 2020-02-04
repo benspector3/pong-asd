@@ -131,7 +131,7 @@ The `position: absolute` property allows us to use the `top` and `left` properti
 
 # Helpful Functions / Code
 
-Below are some funcitons we've written in the past that may be helpful to you in this project:
+Below are some functions we've written in the past that may be helpful to you in this project:
 
 ### Factory Function
 
