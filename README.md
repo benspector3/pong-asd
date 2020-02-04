@@ -28,10 +28,10 @@ With your partner, consider each of these questions and make sure you are aligne
 - What `if`s will there be?
 
 ## Visual Game Components:
-- Which will be static?
-- Which will be animated?
-- What data will you need to model each game component?
-  - Common data values needed for moving components: `x`, `y`, `velocityX`, `velocityY`
+- What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
+  - Which will be static? (the board)
+  - Which will be animated? (the box)
+- What data will you need to manage each game component?
 
 ## Events / Logic 
 - What events will occur in this game? (timer events, keyboard events, clicking events?)
@@ -46,12 +46,13 @@ With your partner, consider each of these questions and make sure you are aligne
 
 The plan for building Pong will be as follows:
 1. Create the DOM elements needed for the game with HTML and CSS
-2. Model the DOM elements with data objects
-3. Reposition the DOM elements on the screen using jQuery
+2. Create a factory function to structure the data needed for each DOM element.
+3. Create a helper function for repositioning the DOM elements on the screen using jQuery
 4. Move the paddles in response to keyboard events
 5. Move the ball in response to timed events
-6. Bounce the ball when it collides with anything
-7. Identify when a point ends and what to do to start a new point
+6. Identify when the ball collides with the paddles --> Determine how the ball will bounce off
+7. Identify when the ball collides with the top or bottom --> Determine how the ball will bounce off
+7. Identify when a point ends --> Determine what to do to start a new point
 8. End the game when 11 points are reached
 
 ## TODO 0: Run the template program and understand the basic structure
