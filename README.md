@@ -168,7 +168,7 @@ function handleKeyDown() {
   var keycode = event.which;
   console.log(keycode);
   
-  if (keycode === 13) {
+  if (keycode === KEYCODE.ENTER) {
     console.log("enter pressed");
   }
 }
