@@ -146,8 +146,8 @@ This function assumes that we have the following _global_ data values:
 function moveGameItem() {
   x += velocityX;
   y += velocityY;
-  $gameItem.css("left", positionX);
-  $gameItem.css("top", positionY);
+  $gameItem.css("left", x);
+  $gameItem.css("top", y);
 }
 ```
 
