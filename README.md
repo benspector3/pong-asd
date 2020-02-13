@@ -1,3 +1,11 @@
+**Table of Contents**
+- [Setup](#setup)
+- [Learning Objectives](#learning-objectives)
+- [Planning](#planning)
+- [Plan of Attack](#plan-of-attack)
+- [Helpful Code](#helpful-code)
+- [Abstraction Example](#abstraction-example)
+
 # Setup
 
 To install this project, first clone the [template](https://github.com/benspector3/asd-template/) repository by entering these commands into your bash terminal:
@@ -55,9 +63,9 @@ The plan for building Pong will be as follows:
 7. Identify when a point ends --> Determine what to do to start a new point
 8. End the game when 11 points are reached
 
-# Helpful Functions / Code
+# Helpful Code
 
-Below are some code / functions we've written in the past that may be helpful to you in this project:
+Below are some code we've written in the past that may be helpful to you in this project:
 
 ### HTML for Game Items:
 
