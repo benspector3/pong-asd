@@ -4,6 +4,11 @@
 - [Planning](#planning)
 - [Plan of Attack](#plan-of-attack)
 - [Helpful Code](#helpful-code)
+  - [HTML for Game Items](#html-for-game-items)
+  - [CSS for Game Items](#css-for-game-items)
+  - [Factory Function](#factory-function)
+  - [Repositioning DOM Elements](#repositioning-dom-elements)
+  - [Keybord Inputs](#keyboard-inputs)
 - [Abstraction Example](#abstraction-example)
 
 # Setup
