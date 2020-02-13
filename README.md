@@ -42,6 +42,19 @@ With your partner, consider each of these questions and make sure you are aligne
 1. When the user clicks on the box --> the score increases and is displayed on the box, the speed increases, the box is reset to the starting position. 
 2. When the timer ticks --> the box will move forward in some direction, if it hits the edge of the screen, reverse the direction 
 
+# Plan of Attack
+
+The plan for building Pong will be as follows:
+1. Create the DOM elements needed for the game with HTML and CSS
+2. Create a factory function to structure the data needed for each DOM element.
+3. Create a helper function `moveGameItem` for repositioning the DOM elements on the screen using jQuery
+4. Move the paddles in response to keyboard events by adjusting each paddle's `.velocityY` property
+5. Move the ball in response to timed events
+6. Identify when the ball collides with the paddles --> Determine how the ball will bounce off
+7. Identify when the ball collides with the top or bottom --> Determine how the ball will bounce off
+7. Identify when a point ends --> Determine what to do to start a new point
+8. End the game when 11 points are reached
+
 # Helpful Functions / Code
 
 Below are some code / functions we've written in the past that may be helpful to you in this project:
@@ -110,7 +123,7 @@ Suggestions for this project:
 
 ### Factory Function
 
-We will need to manage the data for each `gameItem` in this project. I highly recommend using a factory function to ensure that each `gameItem` has the data below:
+We will need to manage the data for each `GameItem` in this project. I highly recommend using a factory function to ensure that each `GameItem` has the data below:
 - `gameItem.$element`
 - `gameItem.x`
 - `gameItem.y`
@@ -118,17 +131,22 @@ We will need to manage the data for each `gameItem` in this project. I highly re
 - `gameItem.velocityY`
 
 ```js
-function carFactory(make, color, doors = 4) {
-  return {
-    "make": make,
-    "color": color,
-    "doors": doors
-  };
-}
+// Initialization
+var gameItem = GameItem("#gameItem");
 
-var myCar = carFactory("chevy", "black", 2);
-var parentsCar = carFactory("volvo", "silver");   // default doors = 4 used 
-var dreamCar = carFactory("ferrari", "red", 2);
+// Helper Functions
+/**
+ * @param {string} selector the CSS selector for the DOM element of the GameItem
+ */
+function GameItem(selector) {
+  var gameItemObj = {};
+  gameItem.$element = $(selector); 
+  gameItem.x = 0;
+  gameItem.y = 0;
+  gameItem.velocityX = 0;
+  gameItem.velocityY = 0;
+  return gameItemObj;
+}
 ```
 
 ### Repositioning DOM Elements
@@ -151,7 +169,7 @@ function moveGameItem() {
 }
 ```
 
-We will need to refactor this function such that it can handle _any_ `$gameItem` with its own `x`, `y`, `velocityX`, and `velocityY` values. 
+We will need to refactor this function such that it can handle _any_ `GameItem`'s `$element` with its own `x`, `y`, `velocityX`, and `velocityY` values. 
 
 ### Keybord Inputs
 
@@ -216,18 +234,4 @@ var roll1 = rollDice(6);
 var roll2 = rollDice(10);	
 var roll3 = rollDice(20);	
 ```
-
-
-# Plan of Attack
-
-The plan for building Pong will be as follows:
-1. Create the DOM elements needed for the game with HTML and CSS
-2. Create a factory function to structure the data needed for each DOM element.
-3. Create a helper function for repositioning the DOM elements on the screen using jQuery
-4. Move the paddles in response to keyboard events
-5. Move the ball in response to timed events
-6. Identify when the ball collides with the paddles --> Determine how the ball will bounce off
-7. Identify when the ball collides with the top or bottom --> Determine how the ball will bounce off
-7. Identify when a point ends --> Determine what to do to start a new point
-8. End the game when 11 points are reached
 
