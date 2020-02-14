@@ -162,6 +162,12 @@ function GameItem(selector) {
 }
 ```
 
+You can then reference the `.$element` property to manipulate the DOM element through jQuery functions like `.css()`:
+
+```js
+gameItem.$element.css("background-color", "red");
+```
+
 ### Repositioning DOM Elements
 
 This function can be used to reposition a DOM element `$gameItem` at an absolute position on the screen by manipulating the CSS properties `left` and `top`. 
